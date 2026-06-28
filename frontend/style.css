@@ -1,0 +1,320 @@
+/* Variables de diseño: quiet luxury, paleta neutra y tipografía elegante */
+:root {
+    --bg-primary: #FAF9F6;      /* Blanco cálido (alabastro) */
+    --text-primary: #111111;    /* Negro obsidiana profundo */
+    --text-secondary: #706E6B;  /* Gris cálido para metadatos */
+    --border-color: #E6E4E0;    /* Gris sutil para separadores finos */
+    --accent-color: #A89B8C;    /* Arena toscana para detalles de selección y hover */
+    
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    
+    --transition-smooth: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Estilos base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Barra de anuncio superior */
+.announcement-bar {
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.75rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* Encabezado */
+.header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 30px 4vw;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    color: var(--text-primary);
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding-bottom: 4px;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--text-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+/* Manifiesto editorial (Hero) */
+.manifesto {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 0 4vw;
+    text-align: center;
+}
+
+.manifesto .subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.manifesto .title {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--text-primary);
+}
+
+@media (min-width: 768px) {
+    .manifesto {
+        margin: 120px auto;
+    }
+    .manifesto .title {
+        font-size: 2.8rem;
+    }
+}
+
+/* Catálogo de Productos */
+.catalog-container {
+    max-width: 1400px;
+    margin: 0 auto 120px;
+    padding: 0 4vw;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px 30px;
+}
+
+@media (min-width: 600px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1400px) {
+    .catalog-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tarjeta de Producto */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Relación de aspecto 4:5 típica de alta costura */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 125%; 
+    overflow: hidden;
+    background-color: #F3F1ED;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.product-image-secondary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.02);
+    transition: var(--transition-smooth);
+}
+
+/* Efecto hover refinado de revelación */
+.product-card:hover .product-image-primary {
+    opacity: 0;
+    transform: scale(1.02);
+}
+
+.product-card:hover .product-image-secondary {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Información del Producto */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.product-brand {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-primary);
+}
+
+.product-model {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.product-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 4px 0;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-price {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--accent-color);
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+}
+
+/* Cargando y Errores */
+.loading, .error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    padding: 100px 0;
+}
+
+.error-message {
+    color: #8C6A60;
+}
+
+/* Pie de página */
+.footer {
+    border-top: 1px solid var(--border-color);
+    padding: 60px 4vw;
+    background-color: #FAF9F6;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    letter-spacing: 0.25em;
+    color: var(--text-primary);
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+}
+
+/* Accesibilidad */
+.product-card:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
