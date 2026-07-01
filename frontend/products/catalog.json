@@ -1,0 +1,107 @@
+{
+  "products": [
+    {
+      "id": "cartier-tank-must",
+      "brand": "Cartier",
+      "model": "Tank Must",
+      "price": 0, 
+      "description": "description",
+      "images": [
+        "./products/cartier/CW-1.avif",
+        "./products/cartier/CW-2.avif",
+        "./products/cartier/CW-3.avif",
+        "./products/cartier/CW-4.avif",
+        "./products/cartier/CW-6.jpeg"
+      ]
+    },
+    {
+      "id": "golden-goose-stardan",
+      "brand": "Golden Goose",
+      "model": "Stardan White Brown Glitter Star",
+      "price": 0,
+      "description": "description",
+      "images": [
+        "./products/Golden-Goose-Stardan-White-Brown-Glitter-Star/GG-1.avif",
+        "./products/Golden-Goose-Stardan-White-Brown-Glitter-Star/GG-2.avif",
+        "./products/Golden-Goose-Stardan-White-Brown-Glitter-Star/GG-3.avif",
+        "./products/Golden-Goose-Stardan-White-Brown-Glitter-Star/GG-4.avif"
+      ]
+    },
+    {
+
+        "id": "goyard-saint-sulpice",
+        "brand": "Goyard",
+        "model": "Saint Sulpice",
+        "price": 0,
+        "description": "description",
+        "images": [
+            "./products/Goyard-Saint-Sulpice/GW-1.webp",
+            "./products/Goyard-Saint-Sulpice/GW-2.webp",
+            "./products/Goyard-Saint-Sulpice/GW-3.webp",
+            "./products/Goyard-Saint-Sulpice/GW-4.webp"
+        ]
+    },
+    {
+        "id": "gucci-palace-hat-w-dustbag",
+        "brand": "Gucci",
+        "model": "Palace",
+        "price": 0,
+        "description": "description",
+        "images": [
+            "./products/Gucci-Palace-Hat-w-Dustbag/GH-1.jpg",
+            "./products/Gucci-Palace-Hat-w-Dustbag/GH-2.jpg",
+            "./products/Gucci-Palace-Hat-w-Dustbag/GH-3.webp",
+            "./products/Gucci-Palace-Hat-w-Dustbag/GH-4.avif"
+        ]
+    },
+    {
+        "id": "gucci-wallet",
+        "brand": "Gucci",
+        "model": "Grey Interior GG Bi-Fold",
+        "price": 0,
+        "description": "description",
+        "images": [
+            "./products/Gucci-Wallet/GW-1.avif",
+            "./products/Gucci-Wallet/GW-2.avif",
+            "./products/Gucci-Wallet/GW-3.avif"
+        ]
+    },
+    {
+        "id": "hermes-belt",
+        "brand": "Hermes",
+        "model": "H Jumping",
+        "price": 0,
+        "description": "description",
+        "images": [
+            "./products/Hermes-Belt/HB-1.jpg",
+            "./products/Hermes-Belt/HB-2.jpg"
+        ]
+    },
+    {
+        "id": "louis-vuitton-bag",
+        "brand": "Louis Vuitton",
+        "model": "Kepall Bandouliere 50 Monogram Washed Denim",
+        "price": 0,
+        "description": "description",
+        "images": [
+            "./products/Louis-Vuitton-Bag/LV-1.avif",
+            "./products/Louis-Vuitton-Bag/LV-2.jpg",
+            "./products/Louis-Vuitton-Bag/LV-3.webp",
+            "./products/Louis-Vuitton-Bag/LV-4.webp"
+        ]
+    },
+    {
+        "id": "prada-sunglasses",
+        "brand": "Prada",
+        "model": "Linea Rosa PS 51z",
+        "price": 0,
+        "description": "description",
+        "images": [
+            "./products/Prada-Sunglasses/PS-1.webp",
+            "./products/Prada-Sunglasses/PS-2.webp",
+            "./products/Prada-Sunglasses/PS-3.webp",
+            "./products/Prada-Sunglasses/PS-4.webp"
+        ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const catalogGrid = document.getElementById('catalog-grid');
     
     // Ruta exacta del archivo de catálogo proporcionado
-    const CATALOG_PATH = '../products/catalog.json';
+    const CATALOG_PATH = './products/catalog.json';
 
     /**
      * Realiza la petición fetch para obtener los productos del catálogo.
