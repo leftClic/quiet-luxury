@@ -180,6 +180,18 @@ body {
     color: inherit;
     background: transparent;
     cursor: pointer;
+    
+    /* Estado inicial para animación por scroll (fade-in-up) */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+    will-change: opacity, transform;
+}
+
+/* Estado visible/activo desencadenado por el IntersectionObserver */
+.product-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Relación de aspecto 4:5 típica de alta costura */

@@ -113,6 +113,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
             catalogGrid.appendChild(card);
         });
+
+        // Inicializar animaciones de revelación por scroll después de inyectar las tarjetas
+        initScrollReveal();
+    }
+
+    /**
+     * Inicializa el IntersectionObserver para animar la aparición de las tarjetas de producto.
+     */
+    function initScrollReveal() {
+        const cards = document.querySelectorAll('.product-card');
+        
+        // Configuración refinada del observador para un comportamiento elegante
+        const observerOptions = {
+            root: null,             // Relativo al viewport del navegador
+            rootMargin: '0px 0px -80px 0px', // Activa la transición sutilmente dentro del viewport
+            threshold: 0.1          // Se activa cuando el 10% del elemento es visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Activar la animación añadiendo la clase CSS
+                    entry.target.classList.add('is-visible');
+                    // Dejar de observar para optimizar rendimiento de scroll
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
     }
 
     /**
