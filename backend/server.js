@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
+const twilio = require('twilio');
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -13,6 +14,9 @@ if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
 
 // Inicializar el cliente de Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+
+// Inicializar el cliente de Twilio
+const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -58,6 +62,25 @@ app.post('/api/inquiries', async (req, res) => {
         if (error) {
             console.error('Error al insertar en Supabase:', error);
             return res.status(500).json({ error: 'Error al registrar la consulta en la base de datos.' });
+        }
+
+        // Enviar notificación por WhatsApp usando Twilio
+        try {
+            const messageBody = `*Quiet Luxury Alert*\n\n` +
+                `Se ha recibido un nuevo cliente interesado:\n\n` +
+                `• *Nombre:* ${name}\n` +
+                `• *Email:* ${email}\n` +
+                `• *Producto:* ${product}\n` +
+                `• *Mensaje:* ${message}`;
+
+            await twilioClient.messages.create({
+                body: messageBody,
+                from: process.env.TWILIO_WHATSAPP_NUMBER,
+                to: process.env.MY_WHATSAPP_NUMBER
+            });
+            console.log('Notificación de WhatsApp enviada exitosamente.');
+        } catch (twilioError) {
+            console.error('Error al enviar la notificación de WhatsApp de Twilio:', twilioError);
         }
 
         // Registro elegante en la consola del servidor con el prefijo requerido
