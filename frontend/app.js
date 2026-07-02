@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const catalogGrid = document.getElementById('catalog-grid');
     
     // Ruta exacta de la API de catálogo en el servidor
-    const CATALOG_PATH = 'https://quiet-luxury-api.onrender.com';
+    const CATALOG_PATH = 'https://quiet-luxury-api.onrender.com/api/products';
 
     // Elementos del modal
     const modal = document.getElementById('product-inquiry-modal');
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Enviar la consulta al backend
-                const response = await fetch('https://quiet-luxury-api.onrender.com', {
+                const response = await fetch('https://quiet-luxury-api.onrender.com/api/products', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
