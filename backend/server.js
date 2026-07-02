@@ -21,25 +21,23 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Endpoint para obtener los productos del catálogo
-app.get('/api/products', (req, res) => {
-    // Ruta absoluta hacia el catálogo de frontend
-    const catalogPath = path.join(__dirname, '../frontend/products/catalog.json');
-    
-    fs.readFile(catalogPath, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error al leer el catálogo:', err);
-            return res.status(500).json({ error: 'Error al obtener los productos.' });
+// Endpoint para obtener los productos del catálogo desde la base de datos Supabase
+app.get('/api/products', async (req, res) => {
+    try {
+        const { data: products, error } = await supabase
+            .from('products')
+            .select('*');
+
+        if (error) {
+            console.error('Error al obtener productos de Supabase:', error);
+            return res.status(500).json({ error: 'Error al obtener los productos de la base de datos.' });
         }
-        
-        try {
-            const catalog = JSON.parse(data);
-            res.json(catalog);
-        } catch (parseErr) {
-            console.error('Error al parsear el catálogo:', parseErr);
-            res.status(500).json({ error: 'Error al procesar los datos del catálogo.' });
-        }
-    });
+
+        res.json({ products });
+    } catch (err) {
+        console.error('Error inesperado al obtener los productos:', err);
+        res.status(500).json({ error: 'Error inesperado al procesar la solicitud.' });
+    }
 });
 
 // Endpoint para registrar una consulta (lead) de producto
