@@ -9,6 +9,80 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ruta exacta del archivo de catálogo proporcionado
     const CATALOG_PATH = './products/catalog.json';
 
+    // Elementos del modal
+    const modal = document.getElementById('product-inquiry-modal');
+    const modalProductName = document.getElementById('modal-product-name');
+    const inquiryForm = document.getElementById('inquiry-form');
+    const formView = document.querySelector('.modal-form-view');
+    const successView = document.querySelector('.modal-success-view');
+
+    /**
+     * Abre el modal de consulta y asigna el nombre de la pieza de forma dinámica.
+     * @param {string} brand - Marca del producto.
+     * @param {string} model - Modelo del producto.
+     */
+    function openModal(brand, model) {
+        modalProductName.textContent = `${brand} ${model}`;
+        modal.classList.add('is-active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        
+        // Foco inicial en el primer campo para accesibilidad
+        const firstInput = document.getElementById('client-name');
+        if (firstInput) {
+            firstInput.focus();
+        }
+    }
+
+    /**
+     * Cierra el modal y restablece la vista del formulario.
+     */
+    function closeModal() {
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        
+        // Restablecer el formulario y vistas tras completarse la animación
+        setTimeout(() => {
+            if (inquiryForm) {
+                inquiryForm.reset();
+            }
+            if (formView && successView) {
+                formView.style.display = 'block';
+                successView.style.display = 'none';
+            }
+        }, 400); // Sincronizado con la transición de 0.4s en CSS
+    }
+
+    // Cerrar modal al hacer clic en el botón de cerrar o en el fondo traslúcido
+    modal.addEventListener('click', (e) => {
+        if (e.target.hasAttribute('data-close-modal')) {
+            closeModal();
+        }
+    });
+
+    // Cerrar modal con la tecla de escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+            closeModal();
+        }
+    });
+
+    // Interceptar envío del formulario para mostrar confirmación elegante
+    if (inquiryForm) {
+        inquiryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            formView.style.display = 'none';
+            successView.style.display = 'block';
+            
+            // Cerrar modal automáticamente después de un breve lapso
+            setTimeout(() => {
+                closeModal();
+            }, 3500);
+        });
+    }
+
     /**
      * Realiza la petición fetch para obtener los productos del catálogo.
      */
@@ -87,20 +161,21 @@ document.addEventListener('DOMContentLoaded', () => {
             // Formato de precio elegante (si es 0, se muestra como Bajo Consulta)
             const price = document.createElement('span');
             price.className = 'product-price';
-            price.textContent = product.price > 0 ? `$${product.price.toLocaleString('en-US')} USD` : 'Bajo consulta';
+            price.textContent = product.price > 0 ? `$${product.price.toLocaleString('en-US')} USD` : 'Precio bajo consulta';
 
             // Composición de elementos
             info.appendChild(brand);
             info.appendChild(model);
-            info.appendChild(description);
+            //info.appendChild(description);
             info.appendChild(price);
 
             card.appendChild(imageContainer);
             card.appendChild(info);
 
-            // Evento para interacciones futuras
-            card.addEventListener('click', () => {
-                console.log(`Consulta sobre la pieza: ${product.brand} ${product.model}`);
+            // Evento para abrir el modal de consulta
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(product.brand, product.model);
             });
 
             // Accesibilidad para tecla Enter o Espacio

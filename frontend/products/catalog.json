@@ -5,7 +5,7 @@
       "brand": "Cartier",
       "model": "Tank Must",
       "price": 0, 
-      "description": "description",
+      "description": "Acero inoxidable pulido, esfera plateada y números romanos que han definido generaciones. Una expresión de elegancia atemporal y equilibrio perfecto.",
       "images": [
         "./products/cartier/CW-1.avif",
         "./products/cartier/CW-2.avif",
@@ -19,7 +19,7 @@
       "brand": "Golden Goose",
       "model": "Stardan White Brown Glitter Star",
       "price": 0,
-      "description": "description",
+      "description": "Silueta inspirada en los noventa con cuero blanco tratado artesanalmente. El detalle en glitter marrón aporta una distinción sutil a la estética urbana.",
       "images": [
         "./products/Golden-Goose-Stardan-White-Brown-Glitter-Star/GG-1.avif",
         "./products/Golden-Goose-Stardan-White-Brown-Glitter-Star/GG-2.avif",
@@ -33,7 +33,7 @@
         "brand": "Goyard",
         "model": "Saint Sulpice",
         "price": 0,
-        "description": "description",
+        "description": "Lona Goyardine verde con su característico patrón entrelazado. Un diseño ultradelgado pensado para acompañar lo esencial con absoluta discreción.",
         "images": [
             "./products/Goyard-Saint-Sulpice/GW-1.webp",
             "./products/Goyard-Saint-Sulpice/GW-2.webp",
@@ -46,7 +46,7 @@
         "brand": "Gucci",
         "model": "Palace",
         "price": 0,
-        "description": "description",
+        "description": "Lona GG Supreme clásica fusionada con la identidad de Palace. Una pieza de colección que eleva el streetwear a las altas esferas del diseño.",
         "images": [
             "./products/Gucci-Palace-Hat-w-Dustbag/GH-1.jpg",
             "./products/Gucci-Palace-Hat-w-Dustbag/GH-2.jpg",
@@ -59,7 +59,7 @@
         "brand": "Gucci",
         "model": "Grey Interior GG Bi-Fold",
         "price": 0,
-        "description": "description",
+        "description": "Exterior en lona GG Supreme con interior de cuero gris texturizado. Funcionalidad refinada envuelta en una estética sobria.",
         "images": [
             "./products/Gucci-Wallet/GW-1.avif",
             "./products/Gucci-Wallet/GW-2.avif",
@@ -71,7 +71,7 @@
         "brand": "Hermes",
         "model": "H Jumping",
         "price": 0,
-        "description": "description",
+        "description": "Cuero reversible de textura granulada con la distintiva hebilla H en acabado dorado. Un equilibrio perfecto entre artesanía y presencia discreta.",
         "images": [
             "./products/Hermes-Belt/HB-1.jpg",
             "./products/Hermes-Belt/HB-2.jpg"
@@ -82,7 +82,7 @@
         "brand": "Louis Vuitton",
         "model": "Kepall Bandouliere 50 Monogram Washed Denim",
         "price": 0,
-        "description": "description",
+        "description": "El clásico bolso de viaje reinterpretado en denim lavado. Una visión contemporánea que conserva el legado artesanal de la Maison.",
         "images": [
             "./products/Louis-Vuitton-Bag/LV-1.avif",
             "./products/Louis-Vuitton-Bag/LV-2.jpg",
@@ -95,7 +95,7 @@
         "brand": "Prada",
         "model": "Linea Rosa PS 51z",
         "price": 0,
-        "description": "description",
+        "description": "Montura de líneas precisas con lentes oscuras de alta protección. Minimalismo deportivo interpretado desde una elegancia contemporánea.",
         "images": [
             "./products/Prada-Sunglasses/PS-1.webp",
             "./products/Prada-Sunglasses/PS-2.webp",

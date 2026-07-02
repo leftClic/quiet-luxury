@@ -22,7 +22,7 @@
             <h1 class="logo">QUIET LUXURY</h1>
             <nav class="nav">
                 <a href="#" class="nav-link active">Colección</a>
-                <a href="#" class="nav-link">Filosofía</a>
+                <a href="./philosophy.html" class="nav-link">Filosofía</a>
                 <a href="#" class="nav-link">Contacto</a>
             </nav>
         </div>
@@ -31,7 +31,7 @@
     <!-- Manifiesto de marca / Sección de Hero editorial -->
     <section class="manifesto">
         <div class="manifesto-content">
-            <p class="subtitle">La esencia de la sutileza</p>
+            <p class="subtitle">La verdadera elegancia nunca necesita llamar la atención.</p>
             <h2 class="title">Una curaduría de piezas excepcionales, definidas por su historia, artesanía y elegancia silenciosa.</h2>
         </div>
     </section>
@@ -51,6 +51,35 @@
             <p class="copyright">&copy; 2026 QUIET LUXURY. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Modal de consulta de producto -->
+    <div id="product-inquiry-modal" class="modal-overlay" data-close-modal aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-container">
+            <button class="modal-close" data-close-modal aria-label="Cerrar modal">&times;</button>
+            <div class="modal-form-view">
+                <h2 id="modal-title" class="modal-title">Solicitar información: <span id="modal-product-name"></span></h2>
+                <form id="inquiry-form" class="modal-form">
+                    <div class="form-group">
+                        <label for="client-name" class="form-label">Nombre completo</label>
+                        <input type="text" id="client-name" name="name" class="form-input" autocomplete="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-email" class="form-label">Correo electrónico</label>
+                        <input type="email" id="client-email" name="email" class="form-input" autocomplete="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-message" class="form-label">Mensaje o consulta</label>
+                        <textarea id="client-message" name="message" class="form-input" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Solicitar Información</button>
+                </form>
+            </div>
+            <div class="modal-success-view" style="display: none;">
+                <h3 class="success-title">Gracias por su interés</h3>
+                <p class="success-text">Un asesor se pondrá en contacto con usted a la brevedad para brindarle atención personalizada.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="app.js" defer></script>
 </body>
