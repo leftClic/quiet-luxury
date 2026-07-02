@@ -5,12 +5,12 @@
 
 ## Pending Tasks (Backlog)
 
-- [ ] Establish the connection with Supabase.
 - [ ] Implement basic user authentication.
 - [ ] Develop a luxury product catalog.
 
 ## Completed Tasks
 
+- [x] **Establish the connection with Supabase and persist inquiries**
 - [x] **Set up the basic Node.js server in `/backend`**
 - [x] Create the `AGENTS.md` file with the main rules.
 - [x] Create the `.context/` folder and its initial files (`CONTEXT.md`, `ARCHITECTURE.md`, `TODO.md`).
