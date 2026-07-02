@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Enviar la consulta al backend
-                const response = await fetch('https://quiet-luxury-api.onrender.com/api/products/inquiries', {
+                const response = await fetch('https://quiet-luxury-api.onrender.com/api/inquiries', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
