@@ -6,8 +6,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const catalogGrid = document.getElementById('catalog-grid');
     
-    // Ruta exacta del archivo de catálogo proporcionado
-    const CATALOG_PATH = './products/catalog.json';
+    // Ruta exacta de la API de catálogo en el servidor
+    const CATALOG_PATH = 'https://quiet-luxury-api.onrender.com';
 
     // Elementos del modal
     const modal = document.getElementById('product-inquiry-modal');
@@ -68,18 +68,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Interceptar envío del formulario para mostrar confirmación elegante
+    // Interceptar envío del formulario para registrar consulta mediante API del backend
     if (inquiryForm) {
-        inquiryForm.addEventListener('submit', (e) => {
+        inquiryForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            formView.style.display = 'none';
-            successView.style.display = 'block';
+            const submitBtn = inquiryForm.querySelector('.btn-submit');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'Solicitar Información';
             
-            // Cerrar modal automáticamente después de un breve lapso
-            setTimeout(() => {
-                closeModal();
-            }, 3500);
+            // Recopilar información del formulario e información de la pieza
+            const name = document.getElementById('client-name').value;
+            const email = document.getElementById('client-email').value;
+            const message = document.getElementById('client-message').value;
+            const product = modalProductName ? modalProductName.textContent : '';
+
+            try {
+                // Cambiar el botón a un estado elegante de carga
+                if (submitBtn) {
+                    submitBtn.textContent = 'Enviando...';
+                    submitBtn.disabled = true;
+                }
+
+                // Enviar la consulta al backend
+                const response = await fetch('https://quiet-luxury-api.onrender.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, message, product })
+                });
+
+                if (response.status === 200) {
+                    // Mostrar la vista de éxito únicamente si responde con 200 OK
+                    formView.style.display = 'none';
+                    successView.style.display = 'block';
+                    
+                    // Cerrar el modal automáticamente tras un breve lapso
+                    setTimeout(() => {
+                        closeModal();
+                    }, 3500);
+                } else {
+                    throw new Error(`Servidor respondió con código: ${response.status}`);
+                }
+            } catch (error) {
+                console.error('Error enviando la consulta:', error);
+                
+                // Revertir el botón a su texto y estado original de forma sutil
+                if (submitBtn) {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+                
+                // Alerta al cliente en caso de error del servidor o conexión
+                alert('Hubo un inconveniente al enviar su solicitud. Por favor, inténtelo de nuevo.');
+            }
         });
     }
 

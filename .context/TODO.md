@@ -2,7 +2,6 @@
 
 ## Active / In Progress Tasks
 
-- [ ] **Set up the basic Node.js server in `/backend`**
 
 ## Pending Tasks (Backlog)
 
@@ -12,6 +11,7 @@
 
 ## Completed Tasks
 
+- [x] **Set up the basic Node.js server in `/backend`**
 - [x] Create the `AGENTS.md` file with the main rules.
 - [x] Create the `.context/` folder and its initial files (`CONTEXT.md`, `ARCHITECTURE.md`, `TODO.md`).
 - [x] Install and configure the context7 MCP tool at the project level (opencode.json, AGENTS.md, skill).
